@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>FAHEEM — AI / CODE / VISION</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#05060a;
+  --bg2:#080a11;
+  --card:rgba(15,18,29,.68);
+  --line:rgba(255,255,255,.09);
+  --text:#f7f8ff;
+  --muted:#8b91a6;
+  --violet:#7c5cff;
+  --cyan:#00e5ff;
+  --pink:#ff3cac;
+  --green:#43f59a;
+  --yellow:#ffd166;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(124,92,255,.14),transparent 28%),
+    radial-gradient(circle at 85% 25%,rgba(0,229,255,.09),transparent 25%),
+    radial-gradient(circle at 50% 80%,rgba(255,60,172,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+  z-index:-2;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+::-webkit-scrollbar{
+  width:7px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(var(--violet),var(--cyan));
+  border-radius:20px;
+}
+
+/* CURSOR */
+
+.cursor{
+  position:fixed;
+  width:18px;
+  height:18px;
+  border:1px solid var(--cyan);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:.08s;
+  mix-blend-mode:screen;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1180px,92%);
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:13px 17px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:rgba(5,6,10,.66);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.4),
+    inset 0 1px rgba(255,255,255,.05);
+}
+
+.logo{
+  font-family:"Space Grotesk";
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--cyan);
+}
+
+.navlinks{
+  display:flex;
+  gap:25px;
+  color:#9da4b8;
+  font-size:11px;
+  font-weight:700;
+}
+
+.navlinks a{
+  transition:.3s;
+}
+
+.navlinks a:hover{
+  color:white;
+}
+
+.github-btn{
+  padding:10px 15px;
+  border-radius:12px;
+  border:1px solid rgba(0,229,255,.22);
+  background:rgba(0,229,255,.06);
+  color:var(--cyan);
+  font-size:10px;
+  font-weight:800;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  max-width:1250px;
+  margin:auto;
+  padding:150px 30px 80px;
+
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:50px;
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+
+  padding:9px 13px;
+  border:1px solid rgba(124,92,255,.25);
+  border-radius:50px;
+
+  color:#b9afff;
+  background:rgba(124,92,255,.07);
+
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.4px;
+}
+
+.live{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 15px var(--green);
+}
+
+.hero h1{
+  margin:27px 0 25px;
+
+  font-family:"Space Grotesk";
+  font-size:clamp(65px,9vw,125px);
+  line-height:.83;
+  letter-spacing:-8px;
+}
+
+.gradient{
+  background:
+    linear-gradient(
+      100deg,
+      #fff 0%,
+      #9b8aff 28%,
+      #00e5ff 62%,
+      #ff3cac 100%
+    );
+  -webkit-background-clip:text;
+  color:transparent;
+  background-size:250%;
+  animation:gradient 7s infinite alternate;
+}
+
+@keyframes gradient{
+  to{background-position:100%}
+}
+
+.hero p{
+  max-width:650px;
+  color:var(--muted);
+  line-height:1.85;
+  font-size:15px;
+}
+
+.hero p strong{
+  color:#e8ebf5;
+}
+
+.buttons{
+  display:flex;
+  gap:13px;
+  margin-top:32px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 20px;
+  border-radius:13px;
+  font-size:11px;
+  font-weight:800;
+  transition:.35s;
+}
+
+.primary{
+  color:#05060a;
+  background:linear-gradient(110deg,var(--cyan),#8c7aff);
+  box-shadow:0 0 35px rgba(0,229,255,.14);
+}
+
+.secondary{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.035);
+  color:#d9dce7;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+/* AI CORE */
+
+.ai-stage{
+  height:500px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+
+.ai-core{
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  position:relative;
+
+  background:
+    radial-gradient(circle at 35% 25%,
+      #ffffff,
+      #a28dff 12%,
+      #4936b8 35%,
+      #090a13 68%);
+
+  box-shadow:
+    0 0 40px rgba(124,92,255,.35),
+    0 0 120px rgba(0,229,255,.12);
+
+  animation:coreFloat 5s ease-in-out infinite;
+}
+
+.ai-core:before,
+.ai-core:after{
+  content:"";
+  position:absolute;
+  inset:-35px;
+  border:1px solid rgba(0,229,255,.18);
+  border-radius:50%;
+  transform:rotate(30deg) scaleY(.55);
+}
+
+.ai-core:after{
+  inset:-65px;
+  border-color:rgba(255,60,172,.13);
+  transform:rotate(-35deg) scaleY(.55);
+}
+
+.core-letter{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-family:"Space Grotesk";
+  font-size:72px;
+  font-weight:800;
+  color:white;
+  text-shadow:
+    0 0 30px rgba(0,229,255,.7);
+}
+
+.orbit{
+  position:absolute;
+  width:390px;
+  height:390px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  animation:spin 18s linear infinite;
+}
+
+.orbit span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 18px var(--cyan);
+  top:18px;
+  left:50%;
+}
+
+.orbit.two{
+  width:460px;
+  height:460px;
+  animation-duration:27s;
+  animation-direction:reverse;
+}
+
+.orbit.two span{
+  background:var(--pink);
+  box-shadow:0 0 18px var(--pink);
+  bottom:20px;
+  top:auto;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes coreFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+.floating{
+  position:absolute;
+  padding:11px 13px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:rgba(10,12,20,.72);
+  backdrop-filter:blur(15px);
+  font-size:9px;
+  font-weight:800;
+  color:#b8bed0;
+}
+
+.f1{top:80px;right:10px}
+.f2{bottom:100px;left:10px}
+.f3{bottom:35px;right:45px;color:var(--cyan)}
+
+/* SECTION */
+
+section:not(.hero){
+  max-width:1200px;
+  margin:auto;
+  padding:110px 25px;
+}
+
+.section-head{
+  max-width:720px;
+  margin:0 auto 55px;
+  text-align:center;
+}
+
+.label{
+  color:var(--cyan);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:2.5px;
+}
+
+.section-head h2{
+  font-family:"Space Grotesk";
+  font-size:clamp(40px,5vw,67px);
+  letter-spacing:-4px;
+  line-height:.95;
+  margin:15px 0;
+}
+
+.section-head p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:13px;
+}
+
+/* MARQUEE */
+
+.marquee{
+  max-width:none !important;
+  padding:20px 0 !important;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+  padding:0 30px;
+  font-family:"Space Grotesk";
+  font-size:12px;
+  font-weight:700;
+  color:#555d70;
+}
+
+.marquee span b{
+  color:var(--violet);
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.glass{
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015));
+  backdrop-filter:blur(15px);
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+
+.glass h3{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.glass p{
+  color:var(--muted);
+  line-height:1.85;
+  font-size:13px;
+}
+
+.info{
+  margin-top:22px;
+  display:grid;
+  gap:9px;
+}
+
+.info div{
+  display:flex;
+  justify-content:space-between;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:11px;
+  background:rgba(255,255,255,.02);
+  font-size:10px;
+}
+
+.info span:first-child{
+  color:#686f81;
+}
+
+.info span:last-child{
+  font-weight:700;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:20px;
+}
+
+.stat{
+  padding:25px 15px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:19px;
+  background:rgba(255,255,255,.025);
+}
+
+.stat strong{
+  display:block;
+  font-family:"Space Grotesk";
+  font-size:28px;
+  color:var(--cyan);
+}
+
+.stat small{
+  color:#686f81;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+/* SKILLS */
+
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.skill{
+  padding:27px;
+  border:1px solid var(--line);
+  border-radius:21px;
+  background:rgba(255,255,255,.025);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.skill:after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  right:-50px;
+  top:-50px;
+  background:rgba(124,92,255,.12);
+  filter:blur(15px);
+}
+
+.skill:hover{
+  transform:translateY(-7px);
+  border-color:rgba(0,229,255,.22);
+  background:rgba(255,255,255,.04);
+}
+
+.skill-icon{
+  font-size:23px;
+  margin-bottom:18px;
+  color:var(--cyan);
+}
+
+.skill h3{
+  margin-bottom:9px;
+  font-size:16px;
+}
+
+.skill p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:11px;
+}
+
+/* TECH */
+
+.techs{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:30px;
+}
+
+.tech{
+  padding:9px 13px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  color:#8991a4;
+  font-size:9px;
+  font-weight:700;
+  background:rgba(255,255,255,.02);
+}
+
+/* GITHUB */
+
+.github{
+  display:grid;
+  grid-template-columns:1fr .8fr;
+  gap:20px;
+}
+
+.github-main{
+  min-height:350px;
+}
+
+.github-title{
+  font-family:"Space Grotesk";
+  font-size:48px;
+  letter-spacing:-3px;
+  margin:13px 0 15px;
+}
+
+.github-title span{
+  color:var(--cyan);
+}
+
+.github p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:13px;
+}
+
+.github-box{
+  margin-top:25px;
+  padding:18px;
+  border-radius:15px;
+  background:#080a10;
+  border:1px solid rgba(255,255,255,.06);
+  font-family:monospace;
+  font-size:10px;
+  color:#8d96aa;
+}
+
+.github-box b{
+  color:var(--green);
+}
+
+.github-visual{
+  display:grid;
+  place-items:center;
+  min-height:350px;
+}
+
+.github-mark{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:75px;
+  color:white;
+
+  background:
+    radial-gradient(circle,#202638,#080a10);
+
+  box-shadow:
+    0 0 70px rgba(124,92,255,.16),
+    inset 0 0 40px rgba(255,255,255,.04);
+}
+
+.github-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-top:20px;
+}
+
+.github-stat{
+  padding:13px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.github-stat strong{
+  display:block;
+  color:var(--violet);
+  font-size:17px;
+}
+
+.github-stat small{
+  color:#626a7c;
+  font-size:8px;
+}
+
+/* PROJECTS */
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.project{
+  min-height:240px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(255,255,255,.025);
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
+}
+
+.project:hover{
+  transform:translateY(-8px);
+  border-color:rgba(124,92,255,.3);
+}
+
+.project-number{
+  color:var(--cyan);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.project h3{
+  font-family:"Space Grotesk";
+  font-size:25px;
+  margin:16px 0 10px;
+}
+
+.project p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.75;
+  max-width:500px;
+}
+
+.project-link{
+  display:inline-block;
+  margin-top:22px;
+  color:var(--cyan);
+  font-size:9px;
+  font-weight:800;
+}
+
+.project-glow{
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-80px;
+  bottom:-100px;
+  border-radius:50%;
+  background:rgba(0,229,255,.08);
+  filter:blur(25px);
+}
+
+/* NOVA */
+
+.nova{
+  border:1px solid rgba(124,92,255,.2);
+  background:
+    radial-gradient(circle at 80% 50%,rgba(124,92,255,.12),transparent 30%),
+    rgba(255,255,255,.025);
+}
+
+.nova-grid{
+  display:grid;
+  grid-template-columns:1fr .75fr;
+  gap:30px;
+  align-items:center;
+}
+
+.nova h2{
+  font-family:"Space Grotesk";
+  font-size:54px;
+  letter-spacing:-4px;
+  margin:13px 0;
+}
+
+.nova h2 span{
+  background:linear-gradient(100deg,var(--violet),var(--cyan),var(--pink));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nova p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.nova-list{
+  display:grid;
+  gap:8px;
+  margin:20px 0;
+}
+
+.nova-list div{
+  padding:11px 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:9px;
+  color:#aeb4c4;
+  background:rgba(255,255,255,.02);
+}
+
+.nova-visual{
+  min-height:330px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:#070810;
+  position:relative;
+  overflow:hidden;
+}
+
+.nova-ring{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  border:1px solid rgba(0,229,255,.35);
+  display:grid;
+  place-items:center;
+  animation:spin 12s linear infinite;
+}
+
+.nova-ring:before{
+  content:"N";
+  width:115px;
+  height:115px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:"Space Grotesk";
+  font-size:45px;
+  font-weight:800;
+  color:white;
+  background:
+    radial-gradient(circle,var(--violet),#090a12 70%);
+  box-shadow:0 0 50px rgba(124,92,255,.35);
+  animation:spin 12s linear infinite reverse;
+}
+
+/* CERT */
+
+.certs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.cert{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,.025);
+}
+
+.cert-icon{
+  color:var(--yellow);
+  font-size:22px;
+  margin-bottom:17px;
+}
+
+.cert h3{
+  font-size:15px;
+  margin-bottom:9px;
+}
+
+.cert p{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.7;
+}
+
+.cert-tag{
+  display:inline-block;
+  margin-top:15px;
+  color:var(--cyan);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+/* JOURNEY */
+
+.timeline{
+  max-width:800px;
+  margin:auto;
+  border-left:1px solid rgba(0,229,255,.18);
+}
+
+.timeline-item{
+  padding:0 0 45px 35px;
+  position:relative;
+}
+
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 15px var(--cyan);
+  left:-4px;
+  top:4px;
+}
+
+.timeline-item small{
+  color:var(--cyan);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.timeline-item h3{
+  margin:8px 0;
+  font-size:20px;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.7;
+}
+
+/* CTA */
+
+.cta{
+  max-width:1100px !important;
+  margin:70px auto 100px !important;
+
+  text-align:center;
+
+  padding:100px 25px !important;
+
+  border:1px solid rgba(124,92,255,.2);
+  border-radius:35px;
+
+  background:
+    radial-gradient(circle at 50% 20%,rgba(124,92,255,.14),transparent 38%),
+    rgba(255,255,255,.025);
+
+  box-shadow:0 30px 100px rgba(0,0,0,.3);
+}
+
+.cta h2{
+  font-family:"Space Grotesk";
+  font-size:clamp(45px,7vw,82px);
+  letter-spacing:-5px;
+  line-height:.9;
+}
+
+.cta h2 span{
+  background:linear-gradient(100deg,var(--cyan),var(--violet),var(--pink));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.cta p{
+  max-width:550px;
+  margin:20px auto 30px;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:12px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:35px 20px 45px;
+  color:#535b6d;
+  font-size:9px;
+  line-height:2;
+}
+
+footer strong{
+  color:var(--cyan);
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-top:140px;
+  }
+
+  .hero p{
+    margin:auto;
+  }
+
+  .buttons{
+    justify-content:center;
+  }
+
+  .hero-right{
+    margin-top:20px;
+  }
+
+  .about-grid,
+  .github,
+  .nova-grid{
+    grid-template-columns:1fr;
+  }
+
+  .skill-grid,
+  .certs{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  .hero{
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  .hero h1{
+    letter-spacing:-5px;
+    font-size:65px;
+  }
+
+  .hero-right{
+    width:100%;
+  }
+
+  .ai-stage{
+    transform:scale(.75);
+    height:400px;
+  }
+
+  .skill-grid,
+  .projects,
+  .certs{
+    grid-template-columns:1fr;
+  }
+
+  section:not(.hero){
+    padding:80px 20px;
+  }
+
+  .stats{
+    gap:10px;
+  }
+
+  .stat strong{
+    font-size:24px;
+  }
+
+  .nova h2,
+  .github-title{
+    font-size:39px;
+  }
+
+  .github-visual{
+    min-height:250px;
+  }
+
+  .github-mark{
+    width:140px;
+    height:140px;
+    font-size:55px;
+  }
+
+  .cta{
+    margin-left:15px !important;
+    margin-right:15px !important;
+    padding:75px 20px !important;
+  }
+
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+
+<!-- NAV -->
+
+<nav>
+
+  <a href="#" class="logo">
+    FAHEEM<span>.</span>
+  </a>
+
+  <div class="navlinks">
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#github">GITHUB</a>
+    <a href="#work">WORK</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+
+  <!-- CHANGE USERNAME -->
+
+  <a
+    href="https://github.com/YOUR_GITHUB_USERNAME"
+    target="_blank"
+    class="github-btn"
+  >
+    ◇ GITHUB
+  </a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <div class="kicker">
+      <span class="live"></span>
+      BUILDING THE FUTURE WITH AI
+    </div>
+
+    <h1>
+      FAHEEM<br>
+      <span class="gradient">IQBAL.</span>
+    </h1>
+
+    <p>
+
+      <strong>Computer Science student • AI enthusiast • Developer • Creator</strong>
+
+      <br><br>
+
+      I build digital experiences, experiment with artificial
+      intelligence and explore the technologies shaping tomorrow.
+
+      From code to concepts, I'm obsessed with turning
+      ambitious ideas into something people can actually see,
+      use and remember.
+
+    </p>
+
+    <div class="buttons">
+
+      <a href="#work" class="btn primary">
+        EXPLORE MY WORK →
+      </a>
+
+      <a href="#github" class="btn secondary">
+        VIEW GITHUB ◇
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="ai-stage">
+
+    <div class="orbit">
+      <span></span>
+    </div>
+
+    <div class="orbit two">
+      <span></span>
+    </div>
+
+    <div class="ai-core">
+      <div class="core-letter">
+        F
+      </div>
+    </div>
+
+    <div class="floating f1">
+      ✦ AI / ML
+    </div>
+
+    <div class="floating f2">
+      &lt;/&gt; CODE
+    </div>
+
+    <div class="floating f3">
+      ⚡ BUILD MODE
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+
+<section class="marquee">
+
+  <div class="marquee-track">
+
+    <span>ARTIFICIAL INTELLIGENCE <b>✦</b></span>
+    <span>SOFTWARE DEVELOPMENT <b>✦</b></span>
+    <span>WEB TECHNOLOGY <b>✦</b></span>
+    <span>CREATIVE CODE <b>✦</b></span>
+    <span>AUTOMATION <b>✦</b></span>
+    <span>FUTURE TECH <b>✦</b></span>
+
+    <span>ARTIFICIAL INTELLIGENCE <b>✦</b></span>
+    <span>SOFTWARE DEVELOPMENT <b>✦</b></span>
+    <span>WEB TECHNOLOGY <b>✦</b></span>
+    <span>CREATIVE CODE <b>✦</b></span>
+    <span>AUTOMATION <b>✦</b></span>
+    <span>FUTURE TECH <b>✦</b></span>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="section-head reveal">
+
+    <span class="label">01 / ABOUT</span>
+
+    <h2>
+      Not just learning.<br>
+      <span class="gradient">Building.</span>
+    </h2>
+
+    <p>
+      I'm developing my skills across AI, software,
+      web development, cloud and digital design —
+      with a strong focus on turning learning into projects.
+    </p>
+
+  </div>
+
+
+  <div class="about-grid reveal">
+
+    <div class="glass">
+
+      <h3>
+        The person behind the screen.
+      </h3>
+
+      <p>
+        I'm Faheem Iqbal, a Computer Science student
+        fascinated by artificial intelligence, software
+        development and the rapidly changing world of technology.
+
+        I enjoy experimenting with new tools, building websites,
+        exploring AI systems and creating projects that push
+        my understanding further.
+      </p>
+
+      <div class="info">
+
+        <div>
+          <span>Name</span>
+          <span>Faheem Iqbal</span>
+        </div>
+
+        <div>
+          <span>Education</span>
+          <span>B.Tech CSE — Ongoing</span>
+        </div>
+
+        <div>
+          <span>Focus</span>
+          <span>AI • Software • Web</span>
+        </div>
+
+        <div>
+          <span>Base</span>
+          <span>Amritsar, India</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="glass">
+
+      <h3>
+        The mindset.
+      </h3>
+
+      <p>
+        Technology changes every day.
+
+        My approach is to stay curious, learn continuously,
+        experiment aggressively and build things that turn
+        abstract ideas into visible experiences.
+
+        The long-term vision is to work on technology at
+        global scale.
+      </p>
+
+      <div class="info">
+
+        <div>
+          <span>Mindset</span>
+          <span>Learn → Build → Repeat</span>
+        </div>
+
+        <div>
+          <span>Interest</span>
+          <span>Artificial Intelligence</span>
+        </div>
+
+        <div>
+          <span>Creative Side</span>
+          <span>UI / UX • Digital Design</span>
+        </div>
+
+        <div>
+          <span>Mission</span>
+          <span>Build meaningful technology</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="stats reveal">
+
+    <div class="stat">
+      <strong>AI</strong>
+      <small>CORE INTEREST</small>
+    </div>
+
+    <div class="stat">
+      <strong>∞</strong>
+      <small>IDEAS</small>
+    </div>
+
+    <div class="stat">
+      <strong>24/7</strong>
+      <small>LEARNING MODE</small>
+    </div>
+
+    <div class="stat">
+      <strong>1Cr+</strong>
+      <small>LONG-TERM GOAL</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <div class="section-head reveal">
+
+    <span class="label">02 / TOOLKIT</span>
+
+    <h2>
+      A stack that<br>
+      keeps <span class="gradient">evolving.</span>
+    </h2>
+
+    <p>
+      My technical toolkit spans programming,
+      AI, web development, cloud technologies,
+      developer tools and creative technology.
+    </p>
+
+  </div>
+
+
+  <div class="skill-grid reveal">
+
+    <div class="skill">
+      <div class="skill-icon">&lt;/&gt;</div>
+      <h3>Programming</h3>
+      <p>
+        Python, C, C++, Java, JavaScript, HTML,
+        CSS, SQL and continuous exploration of
+        new programming technologies.
+      </p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">◈</div>
+      <h3>Web Development</h3>
+      <p>
+        Responsive websites, interactive interfaces,
+        frontend development, APIs and modern
+        web experiences.
+      </p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">✦</div>
+      <h3>AI & Automation</h3>
+      <p>
+        AI assistants, intelligent workflows,
+        automation concepts and experimentation
+        with emerging AI technologies.
+      </p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">☁</div>
+      <h3>Cloud & DevOps</h3>
+      <p>
+        Microsoft Azure, Git, GitHub, Linux,
+        APIs, VS Code and modern development
+        workflows.
+      </p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">✎</div>
+      <h3>UI / UX</h3>
+      <p>
+        Figma, visual systems, interface design,
+        digital presentation and immersive
+        portfolio experiences.
+      </p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">◆</div>
+      <h3>Creative Tech</h3>
+      <p>
+        Digital content, visual experimentation,
+        creative workflows and technology-driven
+        presentation.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="techs reveal">
+
+    <span class="tech">Python</span>
+    <span class="tech">C</span>
+    <span class="tech">C++</span>
+    <span class="tech">Java</span>
+    <span class="tech">JavaScript</span>
+    <span class="tech">HTML</span>
+    <span class="tech">CSS</span>
+    <span class="tech">SQL</span>
+    <span class="tech">React</span>
+    <span class="tech">Node.js</span>
+    <span class="tech">Git</span>
+    <span class="tech">GitHub</span>
+    <span class="tech">GitHub Pro</span>
+    <span class="tech">Azure</span>
+    <span class="tech">Linux</span>
+    <span class="tech">Figma</span>
+    <span class="tech">AI</span>
+
+  </div>
+
+</section>
+
+
+<!-- GITHUB -->
+
+<section id="github">
+
+  <div class="section-head reveal">
+
+    <span class="label">03 / OPEN SOURCE</span>
+
+    <h2>
+      Code doesn't<br>
+      belong in a <span class="gradient">folder.</span>
+    </h2>
+
+    <p>
+      My GitHub is the public side of my development journey —
+      projects, experiments, experiments with AI and everything
+      I'm learning by building.
+    </p>
+
+  </div>
+
+
+  <div class="github reveal">
+
+    <div class="glass github-main">
+
+      <span class="label">
+        GITHUB / DEVELOPER PROFILE
+      </span>
+
+      <h2 class="github-title">
+        Building in <span>public.</span>
+      </h2>
+
+      <p>
+        Explore my repositories and follow the evolution
+        of my projects from first idea to working code.
+      </p>
+
+
+      <div class="github-stats">
+
+        <div class="github-stat">
+          <strong>∞</strong>
+          <small>REPOS</small>
+        </div>
+
+        <div class="github-stat">
+          <strong>AI</strong>
+          <small>FOCUS</small>
+        </div>
+
+        <div class="github-stat">
+          <strong>⚡</strong>
+          <small>BUILDING</small>
+        </div>
+
+      </div>
+
+
+      <div class="github-box">
+        <b>$</b> git clone faheem/future<br>
+        <b>→</b> exploring ideas...<br>
+        <b>→</b> building systems...<br>
+        <b>→</b> pushing the future...
+      </div>
+
+
+      <!-- CHANGE USERNAME -->
+
+      <a
+        href="https://github.com/YOUR_GITHUB_USERNAME"
+        target="_blank"
+        class="btn primary"
+        style="margin-top:20px;display:inline-flex"
+      >
+        OPEN GITHUB →
+      </a>
+
+    </div>
+
+
+    <div class="glass github-visual">
+
+      <!-- CHANGE USERNAME -->
+
+      <a
+        href="https://github.com/YOUR_GITHUB_USERNAME"
+        target="_blank"
+        class="github-mark"
+      >
+        ◇
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NOVA -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <span class="label">04 / FLAGSHIP</span>
+
+    <h2>
+      One idea.<br>
+      <span class="gradient">Much bigger.</span>
+    </h2>
+
+    <p>
+      The project representing where I'm heading —
+      AI that doesn't just talk, but helps people work.
+    </p>
+
+  </div>
+
+
+  <div class="glass nova reveal">
+
+    <div class="nova-grid">
+
+      <div>
+
+        <span class="label">
+          NOVA OS — AI THAT WORKS
+        </span>
+
+        <h2>
+          Meet <span>NOVA.</span>
+        </h2>
+
+        <p>
+          An ambitious AI assistant concept built around
+          a simple question:
+
+          <br><br>
+
+          <strong style="color:white">
+            What if an AI could understand your request
+            and actually help execute the work?
+          </strong>
+
+          <br><br>
+
+          NOVA explores the intersection of AI,
+          voice, vision, applications, files,
+          browser workflows and development.
+        </p>
+
+
+        <div class="nova-list">
+
+          <div>✦ Conversational AI</div>
+          <div>◈ Voice + Vision Interaction</div>
+          <div>⚡ Browser Assistance</div>
+          <div>&lt;/&gt; Developer Workflows</div>
+          <div>◆ Files & Digital Workspace</div>
+          <div>◇ GitHub / Project Workflows</div>
+
+        </div>
+
+        <a href="#" class="btn primary">
+          EXPLORE NOVA →
+        </a>
+
+      </div>
+
+
+      <div class="nova-visual">
+
+        <div class="nova-ring"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="work">
+
+  <div class="section-head reveal">
+
+    <span class="label">05 / SELECTED WORK</span>
+
+    <h2>
+      From imagination<br>
+      to <span class="gradient">execution.</span>
+    </h2>
+
+    <p>
+      Experiments and concepts across web,
+      AI, development and creative technology.
+    </p>
+
+  </div>
+
+
+  <div class="projects reveal">
+
+
+    <div class="project">
+
+      <span class="project-number">
+        01 / WEB
+      </span>
+
+      <h3>
+        3D Interactive Portfolio
+      </h3>
+
+      <p>
+        An immersive personal web experience combining
+        cinematic visuals, interactive elements,
+        animations and modern typography.
+      </p>
+
+      <a href="#" class="project-link">
+        VIEW PROJECT →
+      </a>
+
+      <div class="project-glow"></div>
+
+    </div>
+
+
+    <div class="project">
+
+      <span class="project-number">
+        02 / AI
+      </span>
+
+      <h3>
+        AI Experiment Lab
+      </h3>
+
+      <p>
+        Experiments exploring AI assistants,
+        automation, intelligent interfaces and
+        emerging AI workflows.
+      </p>
+
+      <a href="#" class="project-link">
+        VIEW PROJECT →
+      </a>
+
+      <div class="project-glow"></div>
+
+    </div>
+
+
+    <div class="project">
+
+      <span class="project-number">
+        03 / DEVELOPMENT
+      </span>
+
+      <h3>
+        Programming Lab
+      </h3>
+
+      <p>
+        A collection of programming experiments,
+        coding concepts, algorithms and development
+        projects.
+      </p>
+
+      <a href="#" class="project-link">
+        VIEW PROJECT →
+      </a>
+
+      <div class="project-glow"></div>
+
+    </div>
+
+
+    <div class="project">
+
+      <span class="project-number">
+        04 / FUTURE TECH
+      </span>
+
+      <h3>
+        Future Lab
+      </h3>
+
+      <p>
+        Experimental concepts exploring emerging
+        technologies and the future of digital
+        experiences.
+      </p>
+
+      <a href="#" class="project-link">
+        VIEW PROJECT →
+      </a>
+
+      <div class="project-glow"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CERTIFICATIONS -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <span class="label">06 / LEARNING</span>
+
+    <h2>
+      Credentials<br>
+      meet <span class="gradient">curiosity.</span>
+    </h2>
+
+  </div>
+
+
+  <div class="certs reveal">
+
+
+    <div class="cert">
+
+      <div class="cert-icon">✦</div>
+
+      <h3>
+        IBM Certification
+      </h3>
+
+      <p>
+        Technology and development-focused
+        certification learning.
+      </p>
+
+      <span class="cert-tag">
+        IBM
+      </span>
+
+    </div>
+
+
+    <div class="cert">
+
+      <div class="cert-icon">◈</div>
+
+      <h3>
+        Web Development Fundamentals
+      </h3>
+
+      <p>
+        Foundational web development concepts
+        and modern website technologies.
+      </p>
+
+      <span class="cert-tag">
+        WEB DEVELOPMENT
+      </span>
+
+    </div>
+
+
+    <div class="cert">
+
+      <div class="cert-icon">☁</div>
+
+      <h3>
+        Microsoft Azure
+      </h3>
+
+      <p>
+        Exploring cloud computing and
+        Azure-based technology workflows.
+      </p>
+
+      <span class="cert-tag">
+        AZURE
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- JOURNEY -->
+
+<section>
+
+  <div class="section-head reveal">
+
+    <span class="label">07 / JOURNEY</span>
+
+    <h2>
+      Still becoming<br>
+      <span class="gradient">better.</span>
+    </h2>
+
+    <p>
+      The journey isn't a finished story.
+      That's exactly what makes it exciting.
+    </p>
+
+  </div>
+
+
+  <div class="timeline reveal">
+
+
+    <div class="timeline-item">
+
+      <small>FOUNDATION</small>
+
+      <h3>
+        Started with curiosity.
+      </h3>
+
+      <p>
+        Exploring computers, programming and
+        understanding how digital technology works.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <small>DEVELOPMENT</small>
+
+      <h3>
+        Started building.
+      </h3>
+
+      <p>
+        Moving from learning concepts to creating
+        websites, coding projects and experiments.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <small>AI ERA</small>
+
+      <h3>
+        Started exploring intelligence.
+      </h3>
+
+      <p>
+        Diving deeper into AI, assistants,
+        automation and the possibilities of
+        intelligent software.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <small>NEXT</small>
+
+      <h3>
+        Build something people remember.
+      </h3>
+
+      <p>
+        The next chapter is about turning ambitious
+        concepts into serious products and systems.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="cta" id="contact">
+
+  <span class="label">
+    08 / LET'S CONNECT
+  </span>
+
+  <h2>
+    Let's build<br>
+    something <span>insane.</span>
+  </h2>
+
+  <p>
+    Got an idea, opportunity, project or collaboration?
+    Let's turn the blank screen into something real.
+  </p>
+
+
+  <div class="buttons" style="justify-content:center">
+
+    <a
+      href="mailto:mirfaheem1306@gmail.com"
+      class="btn primary"
+    >
+      EMAIL ME →
+    </a>
+
+
+    <!-- CHANGE USERNAME -->
+
+    <a
+      href="https://github.com/YOUR_GITHUB_USERNAME"
+      target="_blank"
+      class="btn secondary"
+    >
+      GITHUB ◇
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  FAHEEM<span style="color:var(--cyan)">.</span>
+
+  <br>
+
+  AI • CODE • CREATIVITY • FUTURE
+
+  <br><br>
+
+  Designed & developed by
+  <strong>Faheem Iqbal</strong>.
+
+  <br>
+
+  © 2026 All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+/* CURSOR */
+
+const cursor =
+  document.querySelector(".cursor");
+
+document.addEventListener("mousemove",e=>{
+
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+
+});
+
+
+/* REVEAL */
+
+const observer =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+
+      });
+
+    },
+    {threshold:.12}
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el=>observer.observe(el));
+
+
+/* AI CORE MOUSE PARALLAX */
+
+const core =
+  document.querySelector(".ai-core");
+
+document.addEventListener("mousemove",e=>{
+
+  if(!core) return;
+
+  const x =
+    (window.innerWidth/2-e.clientX)/70;
+
+  const y =
+    (window.innerHeight/2-e.clientY)/70;
+
+  core.style.marginLeft=x+"px";
+  core.style.marginTop=y+"px";
+
+});
+
+
+/* NAV SCROLL EFFECT */
+
+const nav =
+  document.querySelector("nav");
+
+window.addEventListener("scroll",()=>{
+
+  if(window.scrollY>50){
+
+    nav.style.background=
+      "rgba(5,6,10,.88)";
+
+  }else{
+
+    nav.style.background=
+      "rgba(5,6,10,.66)";
+
+  }
+
+});
+
+
+/* MAGNETIC BUTTON EFFECT */
+
+document
+  .querySelectorAll(".btn,.github-btn")
+  .forEach(btn=>{
+
+    btn.addEventListener("mousemove",e=>{
+
+      const rect=
+        btn.getBoundingClientRect();
+
+      const x=
+        (e.clientX-rect.left-rect.width/2)*.12;
+
+      const y=
+        (e.clientY-rect.top-rect.height/2)*.12;
+
+      btn.style.transform=
+        `translate(${x}px,${y}px)`;
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+      btn.style.transform="translate(0,0)";
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
